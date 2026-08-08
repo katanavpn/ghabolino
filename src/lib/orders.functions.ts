@@ -41,7 +41,7 @@ export const checkCoupon = createServerFn({ method: "POST" })
 /** ایجاد سفارش و شروع پرداخت */
 export const createOrder = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: { productIds: string[]; couponCode?: string; gateway: Gateway }) => data)
+  .inputValidator((data: { productIds: string[]; couponCode?: string | undefined; gateway: Gateway }) => data)
   .handler(async ({ data, context }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { startPayment } = await import("@/lib/payments.server");
@@ -140,7 +140,7 @@ export const createOrder = createServerFn({ method: "POST" })
 
 /** تایید پرداخت پس از بازگشت از درگاه */
 export const verifyOrder = createServerFn({ method: "POST" })
-  .inputValidator((data: { orderId: string; authority?: string; status?: string }) => data)
+  .inputValidator((data: { orderId: string; authority?: string | undefined; status?: string | undefined }) => data)
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { verifyPayment } = await import("@/lib/payments.server");
