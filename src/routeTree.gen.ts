@@ -18,6 +18,8 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as PaymentCallbackRouteImport } from './routes/payment.callback'
+import { Route as PaymentResultRouteImport } from './routes/payment.result'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media/$'
@@ -67,6 +69,16 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PaymentCallbackRoute = PaymentCallbackRouteImport.update({
+  id: '/payment/callback',
+  path: '/payment/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentResultRoute = PaymentResultRouteImport.update({
+  id: '/payment/result',
+  path: '/payment/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/products/',
   path: '/products/',
@@ -92,6 +104,8 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/payment/callback': typeof PaymentCallbackRoute
+  '/payment/result': typeof PaymentResultRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/products/': typeof ProductsIndexRoute
@@ -106,6 +120,8 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/payment/callback': typeof PaymentCallbackRoute
+  '/payment/result': typeof PaymentResultRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/blog': typeof BlogIndexRoute
   '/products': typeof ProductsIndexRoute
@@ -121,6 +137,8 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/payment/callback': typeof PaymentCallbackRoute
+  '/payment/result': typeof PaymentResultRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/products/': typeof ProductsIndexRoute
@@ -137,6 +155,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/blog/$slug'
+    | '/payment/callback'
+    | '/payment/result'
     | '/products/$slug'
     | '/blog/'
     | '/products/'
@@ -151,6 +171,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/blog/$slug'
+    | '/payment/callback'
+    | '/payment/result'
     | '/products/$slug'
     | '/blog'
     | '/products'
@@ -165,6 +187,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/blog/$slug'
+    | '/payment/callback'
+    | '/payment/result'
     | '/products/$slug'
     | '/blog/'
     | '/products/'
@@ -180,6 +204,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  PaymentCallbackRoute: typeof PaymentCallbackRoute
+  PaymentResultRoute: typeof PaymentResultRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
@@ -251,6 +277,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/payment/callback': {
+      id: '/payment/callback'
+      path: '/payment/callback'
+      fullPath: '/payment/callback'
+      preLoaderRoute: typeof PaymentCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment/result': {
+      id: '/payment/result'
+      path: '/payment/result'
+      fullPath: '/payment/result'
+      preLoaderRoute: typeof PaymentResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products/': {
       id: '/products/'
       path: '/products'
@@ -284,6 +324,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   BlogSlugRoute: BlogSlugRoute,
+  PaymentCallbackRoute: PaymentCallbackRoute,
+  PaymentResultRoute: PaymentResultRoute,
   ProductsSlugRoute: ProductsSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
