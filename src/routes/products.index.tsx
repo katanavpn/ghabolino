@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 type ProductSearch = { category?: string | undefined; q?: string | undefined };
 
-export const Route = createFileRoute("/products")({
+export const Route = createFileRoute("/products/")({
   validateSearch: (search: Record<string, unknown>): ProductSearch => ({
     category: typeof search['category'] === "string" ? search['category'] : undefined,
     q: typeof search['q'] === "string" ? search['q'] : undefined,
