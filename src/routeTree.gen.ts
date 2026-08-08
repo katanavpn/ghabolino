@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
@@ -51,6 +52,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/dashboard'
     | '/blog/$slug'
     | '/products/$slug'
     | '/blog/'
@@ -139,6 +149,7 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/dashboard'
     | '/blog/$slug'
     | '/products/$slug'
     | '/blog'
@@ -152,6 +163,7 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/dashboard'
     | '/blog/$slug'
     | '/products/$slug'
     | '/blog/'
@@ -166,6 +178,7 @@ export interface RootRouteChildren {
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -262,6 +282,7 @@ const rootRouteChildren: RootRouteChildren = {
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
   BlogSlugRoute: BlogSlugRoute,
   ProductsSlugRoute: ProductsSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
