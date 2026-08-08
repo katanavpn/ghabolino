@@ -7,7 +7,12 @@
 export type Gateway = "zarinpal" | "idpay" | "nextpay";
 
 export type StartResult = { redirectUrl: string; authority: string; sandbox: boolean };
-export type VerifyResult = { ok: boolean; refId?: string; cardPan?: string; raw: unknown };
+export type VerifyResult = {
+  ok: boolean;
+  refId?: string | undefined;
+  cardPan?: string | undefined;
+  raw: unknown;
+};
 
 const SANDBOX_PREFIX = "SBX-";
 
@@ -91,7 +96,6 @@ export async function startPayment(params: {
       amount: params.amountToman * 10, // ریال
       callback_uri: params.callbackUrl,
       customer_phone: params.mobile,
-databaseeee:      undefined,
     }),
   });
   const json = (await res.json()) as { code?: number; trans_id?: string };
