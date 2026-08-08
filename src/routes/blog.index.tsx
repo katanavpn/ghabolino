@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { blogQuery } from "@/lib/queries";
 import { formatDate, mediaUrl } from "@/lib/format";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "مقالات آموزشی | آزمونینو" },
