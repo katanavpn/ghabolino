@@ -140,7 +140,7 @@ export function Header() {
             </DropdownMenu>
           ) : (
             <Button asChild size="sm">
-              <Link to="/auth">ورود | ثبت‌نام</Link>
+              <Link to="/auth" search={{ redirect: undefined }}>ورود | ثبت‌نام</Link>
             </Button>
           )}
         </div>
