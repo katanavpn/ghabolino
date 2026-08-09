@@ -38,7 +38,7 @@ export const categoriesQuery = {
   },
 };
 
-export function productsQuery(filters: { category?: string; search?: string } = {}) {
+export function productsQuery(filters: { category?: string | undefined; search?: string | undefined } = {}) {
   return {
     queryKey: ["products", filters.category ?? "all", filters.search ?? ""],
     queryFn: async (): Promise<Product[]> => {

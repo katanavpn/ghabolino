@@ -87,10 +87,18 @@ export const getDownloadLink = createServerFn({ method: "POST" })
     if ((count ?? 0) >= DAILY_LIMIT)
       throw new Error("سقف دانلود روزانه شما تکمیل شده است. لطفاً فردا تلاش کنید.");
 
-    const { data: signed, error } = await supabaseAdmin.storage
-      .from("product-files")
-      .createSignedUrl(file.storage_path, 120, { download: file.name });
-    if (error || !signed) throw new Error("خطا در ساخت لینک دانلود");
+    let downloadUrl: string;
+    if (/^https?:\/\//i.test(file.storage_path)) {
+      // لینک دانلود خارجی که مدیر ثبت کرده است
+      downloadUrl = file.storage_path;
+    } else {
+      const { data: signed, error } = await supabaseAdmin.storage
+        .from("product-files")
+        .createSignedUrl(file.storage_path, 120, { download: file.name });
+      if (error || !signed) throw new Error("خطا در ساخت لینک دانلود");
+      downloadUrl = signed.signedUrl;
+    }
+
 
     const req = getRequest();
     await supabaseAdmin.from("download_logs").insert({
@@ -102,5 +110,5 @@ export const getDownloadLink = createServerFn({ method: "POST" })
       user_agent: req.headers.get("user-agent") ?? null,
     });
 
-    return { url: signed.signedUrl, name: file.name };
+    return { url: downloadUrl, name: file.name };
   });
