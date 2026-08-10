@@ -96,7 +96,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="container-page -mt-8 grid grid-cols-2 gap-3 md:hidden">
+      <section className="container-page relative z-10 -mt-8 grid grid-cols-2 gap-3 md:hidden">
         {FEATURES.map((f) => (
           <div key={f.title} className="surface-card flex min-w-0 items-start gap-2 p-3">
             <f.icon className="size-5 shrink-0 text-primary" />
