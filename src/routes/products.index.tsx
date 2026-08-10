@@ -33,17 +33,17 @@ function ProductsPage() {
 
   return (
     <SiteLayout>
-      <div className="container-page py-10">
-        <h1 className="text-2xl font-extrabold">محصولات آزمونینو</h1>
+      <div className="container-page py-8 sm:py-10">
+        <h1 className="text-xl font-extrabold sm:text-2xl">محصولات آزمونینو</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           {q ? `نتایج جستجو برای «${q}»` : "منابع دسته‌بندی‌شده آزمون‌های استخدامی"}
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="-mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
           <Link
             to="/products"
             search={{ category: undefined, q }}
-            className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+            className={`shrink-0 whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs transition-colors sm:text-sm ${
               !category ? "border-primary bg-primary text-primary-foreground" : "border-border hover:bg-accent"
             }`}
           >
@@ -54,7 +54,7 @@ function ProductsPage() {
               key={c.id}
               to="/products"
               search={{ category: c.slug, q }}
-              className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+              className={`shrink-0 whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs transition-colors sm:text-sm ${
                 category === c.slug
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border hover:bg-accent"
@@ -66,7 +66,7 @@ function ProductsPage() {
         </div>
 
         {isLoading ? (
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {[0, 1, 2, 3, 4, 5].map((i) => (
               <Skeleton key={i} className="h-80 rounded-xl" />
             ))}
@@ -76,7 +76,7 @@ function ProductsPage() {
             محصولی با این مشخصات یافت نشد.
           </div>
         ) : (
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {(products ?? []).map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
