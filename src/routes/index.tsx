@@ -45,18 +45,20 @@ function HomePage() {
   return (
     <SiteLayout>
       <section className="gradient-hero relative overflow-hidden text-primary-foreground">
-        <div className="container-page grid gap-10 py-16 md:grid-cols-2 md:items-center md:py-24">
+        <div className="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-white/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 right-0 size-80 rounded-full bg-white/10 blur-3xl" />
+        <div className="container-page relative grid gap-8 py-12 sm:py-16 md:grid-cols-2 md:items-center md:py-24">
           <div>
             <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-medium">
               مرجع منابع آزمون‌های استخدامی
             </span>
-            <h1 className="mt-5 text-3xl font-extrabold leading-[1.4] md:text-4xl">
+            <h1 className="mt-4 text-2xl font-extrabold leading-[1.45] sm:text-3xl md:text-4xl">
               {banner?.title ?? "قبولی در آزمون استخدامی با منابع به‌روز آزمونینو"}
             </h1>
-            <p className="mt-4 max-w-lg text-sm leading-8 text-primary-foreground/85 md:text-base">
+            <p className="mt-3 max-w-lg text-[13px] leading-7 text-primary-foreground/85 sm:text-sm sm:leading-8 md:text-base">
               {banner?.subtitle ?? "دانلود آنی فایل پس از پرداخت، پشتیبانی همیشگی"}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
               <Button asChild size="lg" variant="secondary">
                 <Link to="/products">
                   مشاهده محصولات <ArrowLeft className="size-4" />
@@ -94,44 +96,44 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="container-page -mt-8 grid gap-4 md:hidden">
-        {FEATURES.slice(0, 2).map((f) => (
-          <div key={f.title} className="surface-card flex items-start gap-3 p-4">
-            <f.icon className="size-5 text-primary" />
-            <div>
-              <div className="text-sm font-bold">{f.title}</div>
-              <p className="text-xs leading-6 text-muted-foreground">{f.text}</p>
+      <section className="container-page relative z-10 -mt-8 grid grid-cols-2 gap-3 md:hidden">
+        {FEATURES.map((f) => (
+          <div key={f.title} className="surface-card flex min-w-0 items-start gap-2 p-3">
+            <f.icon className="size-5 shrink-0 text-primary" />
+            <div className="min-w-0">
+              <div className="text-xs font-bold sm:text-sm">{f.title}</div>
+              <p className="line-clamp-2 text-[11px] leading-5 text-muted-foreground">{f.text}</p>
             </div>
           </div>
         ))}
       </section>
 
-      <section className="container-page py-14">
-        <h2 className="text-xl font-extrabold">دسته‌بندی آزمون‌ها</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="container-page py-10 sm:py-14">
+        <h2 className="text-lg font-extrabold sm:text-xl">دسته‌بندی آزمون‌ها</h2>
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {(categories ?? []).map((c) => (
             <Link
               key={c.id}
               to="/products"
               search={{ category: c.slug, q: undefined }}
-              className="surface-card p-5 transition-shadow hover:shadow-lift"
+              className="surface-card p-4 transition-all hover:-translate-y-0.5 hover:shadow-lift sm:p-5"
             >
-              <div className="text-sm font-bold text-foreground">{c.name}</div>
-              <p className="mt-2 line-clamp-2 text-xs leading-6 text-muted-foreground">{c.description}</p>
+              <div className="text-[13px] font-bold text-foreground sm:text-sm">{c.name}</div>
+              <p className="mt-2 line-clamp-2 text-[11px] leading-5 text-muted-foreground sm:text-xs sm:leading-6">{c.description}</p>
             </Link>
           ))}
         </div>
       </section>
 
       {featured.length > 0 && (
-        <section className="container-page pb-14">
+        <section className="container-page pb-10 sm:pb-14">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-extrabold">پیشنهاد ویژه آزمونینو</h2>
+            <h2 className="text-lg font-extrabold sm:text-xl">پیشنهاد ویژه آزمونینو</h2>
             <Link to="/products" className="text-sm font-medium text-primary">
               مشاهده همه
             </Link>
           </div>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {featured.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
@@ -139,9 +141,9 @@ function HomePage() {
         </section>
       )}
 
-      <section className="container-page pb-16">
-        <h2 className="text-xl font-extrabold">تازه‌ترین منابع</h2>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="container-page pb-12 sm:pb-16">
+        <h2 className="text-lg font-extrabold sm:text-xl">تازه‌ترین منابع</h2>
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {latest.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

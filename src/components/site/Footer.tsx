@@ -3,9 +3,9 @@ import { GraduationCap, Mail, Phone, ShieldCheck } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-border bg-secondary/50">
-      <div className="container-page grid gap-10 py-12 md:grid-cols-4">
-        <div className="md:col-span-2">
+    <footer className="mt-14 border-t border-border bg-secondary/50 sm:mt-20">
+      <div className="container-page grid gap-8 py-10 sm:grid-cols-2 sm:gap-10 md:grid-cols-4 md:py-12">
+        <div className="sm:col-span-2">
           <div className="flex items-center gap-2">
             <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
               <GraduationCap className="size-5" />

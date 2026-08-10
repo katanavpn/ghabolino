@@ -44,7 +44,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <div className="container-page flex h-16 items-center gap-4">
+      <div className="container-page flex h-16 items-center gap-2 sm:gap-4">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="lg:hidden" aria-label="منو">
@@ -67,11 +67,11 @@ export function Header() {
           </SheetContent>
         </Sheet>
 
-        <Link to="/" className="flex items-center gap-2">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+        <Link to="/" className="flex min-w-0 items-center gap-2">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary to-primary/70 text-primary-foreground shadow-sm">
             <GraduationCap className="size-5" />
           </span>
-          <span className="text-lg font-extrabold text-foreground">آزمونینو</span>
+          <span className="truncate text-base font-extrabold text-foreground sm:text-lg">آزمونینو</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -98,7 +98,7 @@ export function Header() {
           />
         </form>
 
-        <div className="mr-auto flex items-center gap-1 md:mr-0">
+        <div className="mr-auto flex shrink-0 items-center gap-0.5 sm:gap-1 md:mr-0">
           <Button asChild variant="ghost" size="icon" className="relative" aria-label="سبد خرید">
             <Link to="/cart">
               <ShoppingCart className="size-5" />

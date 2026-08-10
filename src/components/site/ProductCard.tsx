@@ -17,7 +17,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="surface-card group flex flex-col overflow-hidden transition-shadow hover:shadow-lift">
       <Link to="/products/$slug" params={{ slug: product.slug }} className="block">
-        <div className="relative aspect-4/3 overflow-hidden bg-primary-soft">
+        <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden bg-primary-soft">
           {cover ? (
             <img
               src={cover}
@@ -27,7 +27,7 @@ export function ProductCard({ product }: { product: Product }) {
             />
           ) : (
             <div className="flex size-full items-center justify-center text-primary/50">
-              <FileText className="size-14" />
+              <FileText className="size-10 sm:size-14" />
             </div>
           )}
           {hasDiscount && (
@@ -40,9 +40,9 @@ export function ProductCard({ product }: { product: Product }) {
 
       <div className="flex flex-1 flex-col gap-3 p-4">
         <Link to="/products/$slug" params={{ slug: product.slug }}>
-          <h3 className="line-clamp-2 text-base font-bold leading-7 text-foreground">{product.title}</h3>
+          <h3 className="line-clamp-2 text-sm font-bold leading-6 text-foreground sm:text-base sm:leading-7">{product.title}</h3>
         </Link>
-        <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
+        <p className="line-clamp-2 text-xs leading-6 text-muted-foreground sm:text-sm">
           {product.short_description}
         </p>
         {product.pages ? (

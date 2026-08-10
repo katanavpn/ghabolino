@@ -17,6 +17,7 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminBannersRouteImport } from './routes/admin.banners'
 import { Route as AdminBlogRouteImport } from './routes/admin.blog'
@@ -72,6 +73,11 @@ const ContactRoute = ContactRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/admin/banners': typeof AdminBannersRoute
   '/admin/blog': typeof AdminBlogRoute
   '/admin/coupons': typeof AdminCouponsRoute
@@ -189,6 +196,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/admin/banners': typeof AdminBannersRoute
   '/admin/blog': typeof AdminBlogRoute
   '/admin/coupons': typeof AdminCouponsRoute
@@ -216,6 +224,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/admin/banners': typeof AdminBannersRoute
   '/admin/blog': typeof AdminBlogRoute
   '/admin/coupons': typeof AdminCouponsRoute
@@ -244,6 +253,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/dashboard'
+    | '/reset-password'
     | '/admin/banners'
     | '/admin/blog'
     | '/admin/coupons'
@@ -269,6 +279,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/dashboard'
+    | '/reset-password'
     | '/admin/banners'
     | '/admin/blog'
     | '/admin/coupons'
@@ -295,6 +306,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/dashboard'
+    | '/reset-password'
     | '/admin/banners'
     | '/admin/blog'
     | '/admin/coupons'
@@ -322,6 +334,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PaymentCallbackRoute: typeof PaymentCallbackRoute
   PaymentResultRoute: typeof PaymentResultRoute
@@ -387,6 +400,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -539,6 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   BlogSlugRoute: BlogSlugRoute,
   PaymentCallbackRoute: PaymentCallbackRoute,
   PaymentResultRoute: PaymentResultRoute,
@@ -550,13 +571,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
