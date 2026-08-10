@@ -65,13 +65,19 @@ function AuthPage() {
 
   const sendReset = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return toast.error("ایمیل حساب خود را وارد کنید");
+    if (!email) {
+      toast.error("ایمیل حساب خود را وارد کنید");
+      return;
+    }
     setBusy(true);
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/reset-password`,
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     setSent(true);
     toast.success("لینک بازیابی گذرواژه ارسال شد");
   };

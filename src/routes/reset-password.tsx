@@ -41,12 +41,21 @@ function ResetPasswordPage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password.length < 6) return toast.error("گذرواژه باید حداقل ۶ کاراکتر باشد");
-    if (password !== confirm) return toast.error("گذرواژه و تکرار آن یکسان نیستند");
+    if (password.length < 6) {
+      toast.error("گذرواژه باید حداقل ۶ کاراکتر باشد");
+      return;
+    }
+    if (password !== confirm) {
+      toast.error("گذرواژه و تکرار آن یکسان نیستند");
+      return;
+    }
     setBusy(true);
     const { error } = await supabase.auth.updateUser({ password });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("گذرواژه با موفقیت تغییر کرد");
     navigate({ to: "/dashboard", replace: true });
   };
