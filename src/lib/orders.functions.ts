@@ -122,7 +122,7 @@ export const createOrder = createServerFn({ method: "POST" })
       amountToman: total,
       orderNumber,
       callbackUrl,
-      description: `پرداخت سفارش ${orderNumber} - آزمونینو`,
+      description: `پرداخت سفارش ${orderNumber} - قبولینو`,
       email: context.claims?.email as string | undefined,
     });
 

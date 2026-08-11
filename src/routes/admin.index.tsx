@@ -9,9 +9,9 @@ import { formatToman, formatDateTime, ORDER_STATUS_LABELS, toFaDigits } from "@/
 export const Route = createFileRoute("/admin/")({
   head: () => ({
     meta: [
-      { title: "داشبورد مدیریت | آزمونینو" },
-      { name: "description", content: "آمار فروش، کاربران و سفارش‌های فروشگاه آزمونینو در یک نگاه." },
-      { property: "og:title", content: "داشبورد مدیریت آزمونینو" },
+      { title: "داشبورد مدیریت | قبولینو" },
+      { name: "description", content: "آمار فروش، کاربران و سفارش‌های فروشگاه قبولینو در یک نگاه." },
+      { property: "og:title", content: "داشبورد مدیریت قبولینو" },
       { property: "og:description", content: "آمار زنده فروش و سفارش‌ها" },
     ],
   }),

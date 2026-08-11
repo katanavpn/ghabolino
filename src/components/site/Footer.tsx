@@ -10,10 +10,10 @@ export function Footer() {
             <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
               <GraduationCap className="size-5" />
             </span>
-            <span className="text-lg font-extrabold">آزمونینو</span>
+            <span className="text-lg font-extrabold">قبولینو</span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-7 text-muted-foreground">
-            آزمونینو مرجع تخصصی منابع آزمون‌های استخدامی بانک‌ها، دستگاه‌های اجرایی، آموزش و پرورش و
+            قبولینو مرجع تخصصی منابع آزمون‌های استخدامی بانک‌ها، دستگاه‌های اجرایی، آموزش و پرورش و
             شرکت‌های خصوصی است. تمام فایل‌ها بلافاصله پس از پرداخت در پنل کاربری شما فعال می‌شوند.
           </p>
         </div>
@@ -51,7 +51,7 @@ export function Footer() {
               <Phone className="size-4" /> ۰۲۱-۱۲۳۴۵۶۷۸
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="size-4" /> support@azmoonino.ir
+              <Mail className="size-4" /> support@ghabolino.ir
             </li>
             <li className="flex items-center gap-2">
               <ShieldCheck className="size-4" /> پرداخت امن از درگاه‌های داخلی
@@ -60,7 +60,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
-        تمامی حقوق برای آزمونینو محفوظ است.
+        تمامی حقوق برای قبولینو محفوظ است.
       </div>
     </footer>
   );

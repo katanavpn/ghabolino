@@ -14,9 +14,9 @@ export const Route = createFileRoute("/payment/callback")({
   }),
   head: () => ({
     meta: [
-      { title: "در حال تایید پرداخت | آزمونینو" },
+      { title: "در حال تایید پرداخت | قبولینو" },
       { name: "description", content: "تایید تراکنش و فعال‌سازی دانلود امن سفارش." },
-      { property: "og:title", content: "تایید پرداخت آزمونینو" },
+      { property: "og:title", content: "تایید پرداخت قبولینو" },
       { property: "og:description", content: "در حال بررسی نتیجه تراکنش" },
     ],
   }),

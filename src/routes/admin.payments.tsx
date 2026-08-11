@@ -7,7 +7,7 @@ import { formatDateTime, formatToman, GATEWAY_LABELS, toFaDigits } from "@/lib/f
 export const Route = createFileRoute("/admin/payments")({
   head: () => ({
     meta: [
-      { title: "مدیریت پرداخت‌ها | آزمونینو" },
+      { title: "مدیریت پرداخت‌ها | قبولینو" },
       { name: "description", content: "گزارش تراکنش‌های درگاه‌های زرین‌پال، آیدی‌پی و نکست‌پی." },
       { property: "og:title", content: "مدیریت پرداخت‌ها" },
       { property: "og:description", content: "گزارش تراکنش‌های بانکی" },

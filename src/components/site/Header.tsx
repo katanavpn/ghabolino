@@ -71,7 +71,7 @@ export function Header() {
           <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary to-primary/70 text-primary-foreground shadow-sm">
             <GraduationCap className="size-5" />
           </span>
-          <span className="truncate text-base font-extrabold text-foreground sm:text-lg">آزمونینو</span>
+          <span className="truncate text-base font-extrabold text-foreground sm:text-lg">قبولینو</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

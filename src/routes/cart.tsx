@@ -8,9 +8,9 @@ import { formatToman, mediaUrl } from "@/lib/format";
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
-      { title: "سبد خرید | آزمونینو" },
+      { title: "سبد خرید | قبولینو" },
       { name: "description", content: "بررسی و تکمیل سبد خرید منابع آزمون استخدامی." },
-      { property: "og:title", content: "سبد خرید آزمونینو" },
+      { property: "og:title", content: "سبد خرید قبولینو" },
       { property: "og:description", content: "تکمیل خرید منابع آزمون استخدامی." },
     ],
   }),

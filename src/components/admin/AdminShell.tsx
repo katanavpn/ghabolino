@@ -66,7 +66,7 @@ export function AdminShell({
     <div className="min-h-screen bg-muted/40">
       <header className="sticky top-0 z-40 border-b border-border/60 bg-linear-to-l from-primary to-primary/70 text-primary-foreground shadow-lift">
         <div className="mx-auto flex h-14 max-w-7xl items-center gap-3 px-4">
-          <span className="text-base font-extrabold">پنل مدیریت آزمونینو</span>
+          <span className="text-base font-extrabold">پنل مدیریت قبولینو</span>
           <Button asChild size="sm" variant="secondary" className="mr-auto h-8 gap-1 text-xs">
             <Link to="/">
               <ArrowRight className="size-3.5" /> سایت

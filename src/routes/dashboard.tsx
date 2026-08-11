@@ -13,9 +13,9 @@ import { formatBytes, formatDateTime, formatToman, ORDER_STATUS_LABELS } from "@
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
-      { title: "پنل کاربری | آزمونینو" },
+      { title: "پنل کاربری | قبولینو" },
       { name: "description", content: "مدیریت سفارش‌ها و دانلود فایل‌های خریداری‌شده." },
-      { property: "og:title", content: "پنل کاربری آزمونینو" },
+      { property: "og:title", content: "پنل کاربری قبولینو" },
       { property: "og:description", content: "سفارش‌ها و دانلودهای شما" },
     ],
   }),

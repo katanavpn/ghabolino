@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * آزمونینو design system — modern blue, Persian RTL.
+ * قبولینو design system — modern blue, Persian RTL.
  * All colors are oklch semantic tokens. Never hardcode colors in components.
  */
 

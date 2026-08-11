@@ -14,12 +14,12 @@ export const Route = createFileRoute("/products/")({
   }),
   head: () => ({
     meta: [
-      { title: "محصولات | آزمونینو" },
+      { title: "محصولات | قبولینو" },
       {
         name: "description",
         content: "فهرست کامل جزوات، سوالات و پکیج‌های آمادگی آزمون‌های استخدامی ایران.",
       },
-      { property: "og:title", content: "محصولات آزمونینو" },
+      { property: "og:title", content: "محصولات قبولینو" },
       { property: "og:description", content: "خرید و دانلود آنی منابع آزمون‌های استخدامی." },
     ],
   }),
@@ -34,7 +34,7 @@ function ProductsPage() {
   return (
     <SiteLayout>
       <div className="container-page py-8 sm:py-10">
-        <h1 className="text-xl font-extrabold sm:text-2xl">محصولات آزمونینو</h1>
+        <h1 className="text-xl font-extrabold sm:text-2xl">محصولات قبولینو</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           {q ? `نتایج جستجو برای «${q}»` : "منابع دسته‌بندی‌شده آزمون‌های استخدامی"}
         </p>

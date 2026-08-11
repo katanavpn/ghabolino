@@ -13,9 +13,9 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/products/$slug")({
   head: ({ params }) => ({
     meta: [
-      { title: `${params.slug} | آزمونینو` },
-      { name: "description", content: "جزئیات محصول و خرید امن منابع آزمون استخدامی در آزمونینو." },
-      { property: "og:title", content: "محصول آزمونینو" },
+      { title: `${params.slug} | قبولینو` },
+      { name: "description", content: "جزئیات محصول و خرید امن منابع آزمون استخدامی در قبولینو." },
+      { property: "og:title", content: "محصول قبولینو" },
       { property: "og:description", content: "خرید و دانلود آنی منابع آزمون استخدامی." },
     ],
   }),

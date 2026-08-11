@@ -10,13 +10,13 @@ import { mediaUrl } from "@/lib/format";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "آزمونینو | خرید منابع آزمون‌های استخدامی" },
+      { title: "قبولینو | خرید منابع آزمون‌های استخدامی" },
       {
         name: "description",
         content:
           "دانلود آنی جزوات، سوالات سال‌های گذشته و پکیج‌های کامل آمادگی آزمون استخدامی بانک‌ها، آموزش و پرورش و دستگاه‌های اجرایی.",
       },
-      { property: "og:title", content: "آزمونینو | خرید منابع آزمون‌های استخدامی" },
+      { property: "og:title", content: "قبولینو | خرید منابع آزمون‌های استخدامی" },
       {
         property: "og:description",
         content: "منابع به‌روز آزمون‌های استخدامی با دانلود امن و آنی پس از پرداخت.",
@@ -53,7 +53,7 @@ function HomePage() {
               مرجع منابع آزمون‌های استخدامی
             </span>
             <h1 className="mt-4 text-2xl font-extrabold leading-[1.45] sm:text-3xl md:text-4xl">
-              {banner?.title ?? "قبولی در آزمون استخدامی با منابع به‌روز آزمونینو"}
+              {banner?.title ?? "قبولی در آزمون استخدامی با منابع به‌روز قبولینو"}
             </h1>
             <p className="mt-3 max-w-lg text-[13px] leading-7 text-primary-foreground/85 sm:text-sm sm:leading-8 md:text-base">
               {banner?.subtitle ?? "دانلود آنی فایل پس از پرداخت، پشتیبانی همیشگی"}
@@ -128,7 +128,7 @@ function HomePage() {
       {featured.length > 0 && (
         <section className="container-page pb-10 sm:pb-14">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-extrabold sm:text-xl">پیشنهاد ویژه آزمونینو</h2>
+            <h2 className="text-lg font-extrabold sm:text-xl">پیشنهاد ویژه قبولینو</h2>
             <Link to="/products" className="text-sm font-medium text-primary">
               مشاهده همه
             </Link>

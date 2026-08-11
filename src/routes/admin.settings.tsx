@@ -12,10 +12,10 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/admin/settings")({
   head: () => ({
     meta: [
-      { title: "تنظیمات سایت | آزمونینو" },
+      { title: "تنظیمات سایت | قبولینو" },
       { name: "description", content: "ویرایش اطلاعات تماس، شبکه‌های اجتماعی و متن‌های عمومی فروشگاه." },
       { property: "og:title", content: "تنظیمات سایت" },
-      { property: "og:description", content: "پیکربندی عمومی فروشگاه آزمونینو" },
+      { property: "og:description", content: "پیکربندی عمومی فروشگاه قبولینو" },
     ],
   }),
   component: AdminSettings,
@@ -33,7 +33,7 @@ type Form = {
 };
 
 const EMPTY: Form = {
-  site_title: "آزمونینو",
+  site_title: "قبولینو",
   tagline: "",
   phone: "",
   email: "",

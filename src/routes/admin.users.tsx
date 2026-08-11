@@ -12,7 +12,7 @@ import { formatDate, formatToman, toFaDigits } from "@/lib/format";
 export const Route = createFileRoute("/admin/users")({
   head: () => ({
     meta: [
-      { title: "مدیریت کاربران | آزمونینو" },
+      { title: "مدیریت کاربران | قبولینو" },
       { name: "description", content: "مشاهده کاربران، خریدها و مدیریت دسترسی مدیران فروشگاه." },
       { property: "og:title", content: "مدیریت کاربران" },
       { property: "og:description", content: "کنترل کاربران و دسترسی‌ها" },

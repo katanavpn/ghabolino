@@ -15,10 +15,10 @@ import { formatToman, toFaDigits } from "@/lib/format";
 export const Route = createFileRoute("/admin/coupons")({
   head: () => ({
     meta: [
-      { title: "کدهای تخفیف | آزمونینو" },
+      { title: "کدهای تخفیف | قبولینو" },
       { name: "description", content: "ساخت و مدیریت کدهای تخفیف درصدی و مبلغی فروشگاه." },
       { property: "og:title", content: "مدیریت کدهای تخفیف" },
-      { property: "og:description", content: "کدهای تخفیف فروشگاه آزمونینو" },
+      { property: "og:description", content: "کدهای تخفیف فروشگاه قبولینو" },
     ],
   }),
   component: AdminCoupons,

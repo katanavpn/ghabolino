@@ -11,9 +11,9 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
-      { title: "بازیابی گذرواژه | آزمونینو" },
-      { name: "description", content: "تعیین گذرواژه جدید برای حساب کاربری آزمونینو." },
-      { property: "og:title", content: "بازیابی گذرواژه آزمونینو" },
+      { title: "بازیابی گذرواژه | قبولینو" },
+      { name: "description", content: "تعیین گذرواژه جدید برای حساب کاربری قبولینو." },
+      { property: "og:title", content: "بازیابی گذرواژه قبولینو" },
       { property: "og:description", content: "گذرواژه تازه‌ای برای حساب خود انتخاب کنید." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

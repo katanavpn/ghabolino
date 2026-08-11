@@ -17,9 +17,9 @@ import { formatDate, mediaUrl } from "@/lib/format";
 export const Route = createFileRoute("/admin/blog")({
   head: () => ({
     meta: [
-      { title: "مدیریت مقالات | آزمونینو" },
-      { name: "description", content: "نوشتن، ویرایش و انتشار مقالات آموزشی آزمونینو." },
-      { property: "og:title", content: "مدیریت مقالات آزمونینو" },
+      { title: "مدیریت مقالات | قبولینو" },
+      { name: "description", content: "نوشتن، ویرایش و انتشار مقالات آموزشی قبولینو." },
+      { property: "og:title", content: "مدیریت مقالات قبولینو" },
       { property: "og:description", content: "مدیریت محتوای وبلاگ" },
     ],
   }),

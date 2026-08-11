@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "آزمونینو | منابع آزمون‌های استخدامی" },
+      { title: "قبولینو | منابع آزمون‌های استخدامی" },
       {
         name: "description",
         content: "خرید و دانلود آنی جزوات، سوالات و پکیج‌های آمادگی آزمون‌های استخدامی ایران.",
