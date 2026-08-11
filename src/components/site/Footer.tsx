@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { GraduationCap, Mail, Phone, ShieldCheck } from "lucide-react";
+import { Mail, Phone, ShieldCheck } from "lucide-react";
+import logoAsset from "@/assets/logo.jpg.asset.json";
 
 export function Footer() {
   return (
@@ -7,9 +8,7 @@ export function Footer() {
       <div className="container-page grid gap-8 py-10 sm:grid-cols-2 sm:gap-10 md:grid-cols-4 md:py-12">
         <div className="sm:col-span-2">
           <div className="flex items-center gap-2">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <GraduationCap className="size-5" />
-            </span>
+            <img src={logoAsset.url} alt="لوگوی قبولینو" className="h-9 w-auto rounded-lg object-contain" />
             <span className="text-lg font-extrabold">قبولینو</span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-7 text-muted-foreground">

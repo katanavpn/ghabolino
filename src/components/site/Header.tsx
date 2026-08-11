@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, ShoppingCart, User, LogOut, LayoutDashboard, Search, GraduationCap } from "lucide-react";
+import { Menu, ShoppingCart, User, LogOut, LayoutDashboard, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -16,6 +16,7 @@ import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { toFaDigits } from "@/lib/format";
+import logoAsset from "@/assets/logo.jpg.asset.json";
 
 const NAV = [
   { to: "/", label: "خانه" },
