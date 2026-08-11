@@ -68,9 +68,11 @@ export function Header() {
         </Sheet>
 
         <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary to-primary/70 text-primary-foreground shadow-sm">
-            <GraduationCap className="size-5" />
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="لوگوی قبولینو"
+            className="h-9 w-auto shrink-0 rounded-lg object-contain"
+          />
           <span className="truncate text-base font-extrabold text-foreground sm:text-lg">قبولینو</span>
         </Link>
 
