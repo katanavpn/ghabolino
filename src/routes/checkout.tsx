@@ -15,9 +15,9 @@ import { checkCoupon, createOrder, type Gateway } from "@/lib/orders.functions";
 export const Route = createFileRoute("/checkout")({
   head: () => ({
     meta: [
-      { title: "تسویه حساب | آزمونینو" },
+      { title: "تسویه حساب | قبولینو" },
       { name: "description", content: "پرداخت امن سفارش از طریق درگاه‌های زرین‌پال، آیدی‌پی و نکست‌پی." },
-      { property: "og:title", content: "تسویه حساب آزمونینو" },
+      { property: "og:title", content: "تسویه حساب قبولینو" },
       { property: "og:description", content: "پرداخت امن سفارش منابع آزمون." },
     ],
   }),

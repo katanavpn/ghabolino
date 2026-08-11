@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "آزمونینو | منابع آزمون‌های استخدامی" },
+      { title: "قبولینو | منابع آزمون‌های استخدامی" },
       {
         name: "description",
         content: "خرید و دانلود آنی جزوات، سوالات و پکیج‌های آمادگی آزمون‌های استخدامی ایران.",
@@ -93,9 +93,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://cdn.jsdelivr.net" },
       {
         rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/typeface-iranyekan@0.0.11/index.css",
+      },
+      {
+        rel: "stylesheet",
         href: "https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,

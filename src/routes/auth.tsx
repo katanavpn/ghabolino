@@ -16,10 +16,10 @@ export const Route = createFileRoute("/auth")({
   }),
   head: () => ({
     meta: [
-      { title: "ورود و ثبت‌نام | آزمونینو" },
+      { title: "ورود و ثبت‌نام | قبولینو" },
       { name: "description", content: "ورود یا ساخت حساب کاربری برای خرید و دانلود منابع آزمون." },
-      { property: "og:title", content: "ورود به آزمونینو" },
-      { property: "og:description", content: "حساب کاربری آزمونینو" },
+      { property: "og:title", content: "ورود به قبولینو" },
+      { property: "og:description", content: "حساب کاربری قبولینو" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -93,7 +93,7 @@ function AuthPage() {
               </span>
               <div className="min-w-0">
                 <h1 className="truncate text-lg font-extrabold">
-                  {mode === "forgot" ? "بازیابی گذرواژه" : "حساب کاربری آزمونینو"}
+                  {mode === "forgot" ? "بازیابی گذرواژه" : "حساب کاربری قبولینو"}
                 </h1>
                 <p className="text-xs text-primary-foreground/85">
                   {mode === "forgot" ? "لینک بازیابی به ایمیل شما ارسال می‌شود" : "ورود امن برای خرید و دانلود"}

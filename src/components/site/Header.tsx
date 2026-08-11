@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, ShoppingCart, User, LogOut, LayoutDashboard, Search, GraduationCap } from "lucide-react";
+import { Menu, ShoppingCart, User, LogOut, LayoutDashboard, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -16,6 +16,7 @@ import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { toFaDigits } from "@/lib/format";
+import logoAsset from "@/assets/logo.jpg.asset.json";
 
 const NAV = [
   { to: "/", label: "خانه" },
@@ -68,10 +69,12 @@ export function Header() {
         </Sheet>
 
         <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary to-primary/70 text-primary-foreground shadow-sm">
-            <GraduationCap className="size-5" />
-          </span>
-          <span className="truncate text-base font-extrabold text-foreground sm:text-lg">آزمونینو</span>
+          <img
+            src={logoAsset.url}
+            alt="لوگوی قبولینو"
+            className="h-9 w-auto shrink-0 rounded-lg object-contain"
+          />
+          <span className="truncate text-base font-extrabold text-foreground sm:text-lg">قبولینو</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

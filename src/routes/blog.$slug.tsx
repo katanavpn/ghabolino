@@ -8,9 +8,9 @@ import { formatDate, mediaUrl } from "@/lib/format";
 export const Route = createFileRoute("/blog/$slug")({
   head: () => ({
     meta: [
-      { title: "مقاله | آزمونینو" },
-      { name: "description", content: "مقاله آموزشی آزمون‌های استخدامی در آزمونینو." },
-      { property: "og:title", content: "مقاله آزمونینو" },
+      { title: "مقاله | قبولینو" },
+      { name: "description", content: "مقاله آموزشی آزمون‌های استخدامی در قبولینو." },
+      { property: "og:title", content: "مقاله قبولینو" },
       { property: "og:description", content: "مقاله آموزشی آزمون‌های استخدامی." },
     ],
   }),

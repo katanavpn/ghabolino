@@ -16,8 +16,8 @@ import { mediaUrl, toFaDigits } from "@/lib/format";
 export const Route = createFileRoute("/admin/banners")({
   head: () => ({
     meta: [
-      { title: "مدیریت بنرها | آزمونینو" },
-      { name: "description", content: "مدیریت بنرها و کاورهای صفحه اصلی فروشگاه آزمونینو." },
+      { title: "مدیریت بنرها | قبولینو" },
+      { name: "description", content: "مدیریت بنرها و کاورهای صفحه اصلی فروشگاه قبولینو." },
       { property: "og:title", content: "مدیریت بنرهای صفحه اصلی" },
       { property: "og:description", content: "افزودن و ویرایش بنرهای تبلیغاتی" },
     ],

@@ -11,9 +11,9 @@ export const Route = createFileRoute("/payment/result")({
   }),
   head: () => ({
     meta: [
-      { title: "نتیجه پرداخت | آزمونینو" },
+      { title: "نتیجه پرداخت | قبولینو" },
       { name: "description", content: "نتیجه تراکنش و دسترسی به فایل‌های خریداری‌شده." },
-      { property: "og:title", content: "نتیجه پرداخت آزمونینو" },
+      { property: "og:title", content: "نتیجه پرداخت قبولینو" },
       { property: "og:description", content: "وضعیت سفارش شما" },
     ],
   }),

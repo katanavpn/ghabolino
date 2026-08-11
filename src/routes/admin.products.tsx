@@ -18,7 +18,7 @@ import { formatToman, mediaUrl, toFaDigits } from "@/lib/format";
 export const Route = createFileRoute("/admin/products")({
   head: () => ({
     meta: [
-      { title: "مدیریت آگهی‌ها | آزمونینو" },
+      { title: "مدیریت آگهی‌ها | قبولینو" },
       { name: "description", content: "افزودن، ویرایش و حذف آگهی‌ها، کاورها و فایل‌های PDF قابل دانلود." },
       { property: "og:title", content: "مدیریت آگهی‌ها" },
       { property: "og:description", content: "مدیریت کامل محصولات دیجیتال" },

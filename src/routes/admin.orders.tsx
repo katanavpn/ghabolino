@@ -10,8 +10,8 @@ import { formatDateTime, formatToman, GATEWAY_LABELS, ORDER_STATUS_LABELS, toFaD
 export const Route = createFileRoute("/admin/orders")({
   head: () => ({
     meta: [
-      { title: "مدیریت سفارش‌ها | آزمونینو" },
-      { name: "description", content: "پیگیری و مدیریت وضعیت سفارش‌های فروشگاه آزمونینو." },
+      { title: "مدیریت سفارش‌ها | قبولینو" },
+      { name: "description", content: "پیگیری و مدیریت وضعیت سفارش‌های فروشگاه قبولینو." },
       { property: "og:title", content: "مدیریت سفارش‌ها" },
       { property: "og:description", content: "پیگیری سفارش‌های مشتریان" },
     ],
