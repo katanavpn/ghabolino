@@ -53,10 +53,10 @@ function HomePage() {
               مرجع منابع آزمون‌های استخدامی
             </span>
             <h1 className="mt-4 text-2xl font-extrabold leading-[1.45] sm:text-3xl md:text-4xl">
-              {banner?.title ?? "قبولی در آزمون استخدامی با منابع به‌روز قبولینو"}
+              {banner?.title ?? "بانک کامل نمونه سوالات استخدامی با پاسخنامه"}
             </h1>
             <p className="mt-3 max-w-lg text-[13px] leading-7 text-primary-foreground/85 sm:text-sm sm:leading-8 md:text-base">
-              {banner?.subtitle ?? "دانلود آنی فایل پس از پرداخت، پشتیبانی همیشگی"}
+              {banner?.subtitle ?? "با آمادگی کامل آزمون بده"}
             </p>
             <div className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
               <Button asChild size="lg" variant="secondary">
