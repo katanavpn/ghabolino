@@ -50,7 +50,7 @@ function HomePage() {
         <div className="container-page relative grid gap-8 py-12 sm:py-16 md:grid-cols-2 md:items-center md:py-24">
           <div>
             <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-medium">
-              مرجع منابع آزمون‌های استخدامی
+              بانک کامل نمونه سوالات استخدامی با پاسخنامه
             </span>
             <h1 className="mt-4 text-2xl font-extrabold leading-[1.45] sm:text-3xl md:text-4xl">
               {banner?.title ?? "بانک کامل نمونه سوالات استخدامی با پاسخنامه"}
