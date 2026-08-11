@@ -65,9 +65,15 @@ function AdminHome() {
     <AdminShell title="داشبورد" description="نمای کلی فروشگاه شما">
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
         {cards.map((c) => (
-          <div key={c.label} className="overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm">
-            <div className={`mb-3 flex size-9 items-center justify-center rounded-xl bg-linear-to-br ${c.tone} text-white`}>
-              <c.icon className="size-4" />
+          <div
+            key={c.label}
+            className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card/80 p-4 shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-lift"
+          >
+            <div
+              className={`pointer-events-none absolute -left-6 -top-6 size-20 rounded-full bg-linear-to-br ${c.tone} opacity-15 blur-xl transition-opacity group-hover:opacity-30`}
+            />
+            <div className={`mb-3 flex size-10 items-center justify-center rounded-2xl bg-linear-to-br ${c.tone} text-white shadow-sm`}>
+              <c.icon className="size-4.5" />
             </div>
             <div className="text-[11px] text-muted-foreground">{c.label}</div>
             <div className="mt-1 text-sm font-extrabold sm:text-base">{c.value}</div>
@@ -76,15 +82,20 @@ function AdminHome() {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <section className="rounded-2xl border border-border bg-card p-4 shadow-sm lg:col-span-2">
+        <section className="rounded-3xl border border-border/70 bg-card/80 p-4 shadow-sm backdrop-blur sm:p-5 lg:col-span-2">
           <h2 className="text-sm font-extrabold">آخرین سفارش‌ها</h2>
-          <div className="mt-3 divide-y divide-border">
+          <div className="mt-3 space-y-2">
             {(data?.recent ?? []).map((o) => (
-              <div key={o.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-xs">
+              <div
+                key={o.id}
+                className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-border/60 bg-background/60 px-3 py-2.5 text-xs transition-colors hover:bg-accent/50"
+              >
                 <span className="font-bold">#{toFaDigits(o.order_number)}</span>
                 <span className="text-muted-foreground">{formatDateTime(o.created_at)}</span>
-                <span>{formatToman(o.total)}</span>
-                <span className="rounded-full bg-accent px-2 py-0.5">{ORDER_STATUS_LABELS[o.status] ?? o.status}</span>
+                <span className="font-bold">{formatToman(o.total)}</span>
+                <span className="rounded-full bg-primary/10 px-2 py-0.5 font-bold text-primary">
+                  {ORDER_STATUS_LABELS[o.status] ?? o.status}
+                </span>
               </div>
             ))}
             {(data?.recent ?? []).length === 0 && (
@@ -96,12 +107,20 @@ function AdminHome() {
           </Link>
         </section>
 
-        <section className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+        <section className="rounded-3xl border border-border/70 bg-card/80 p-4 shadow-sm backdrop-blur sm:p-5">
           <h2 className="text-sm font-extrabold">پرفروش‌ترین‌ها</h2>
-          <div className="mt-3 space-y-3">
-            {(data?.top ?? []).map((p) => (
-              <div key={p.id} className="flex items-center justify-between gap-2 text-xs">
-                <span className="line-clamp-1">{p.title}</span>
+          <div className="mt-3 space-y-2">
+            {(data?.top ?? []).map((p, i) => (
+              <div
+                key={p.id}
+                className="flex items-center justify-between gap-2 rounded-2xl border border-border/60 bg-background/60 px-3 py-2.5 text-xs"
+              >
+                <span className="flex min-w-0 items-center gap-2">
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-[10px] font-extrabold text-primary">
+                    {toFaDigits(i + 1)}
+                  </span>
+                  <span className="line-clamp-1">{p.title}</span>
+                </span>
                 <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 font-bold text-primary">
                   {toFaDigits(p.sales_count)} فروش
                 </span>
@@ -116,3 +135,4 @@ function AdminHome() {
     </AdminShell>
   );
 }
+
