@@ -344,6 +344,39 @@ export type Database = {
           },
         ]
       }
+      phone_otps: {
+        Row: {
+          attempts: number
+          code_hash: string
+          consumed_at: string | null
+          created_at: string
+          expires_at: string
+          id: string
+          ip: string | null
+          phone: string
+        }
+        Insert: {
+          attempts?: number
+          code_hash: string
+          consumed_at?: string | null
+          created_at?: string
+          expires_at: string
+          id?: string
+          ip?: string | null
+          phone: string
+        }
+        Update: {
+          attempts?: number
+          code_hash?: string
+          consumed_at?: string | null
+          created_at?: string
+          expires_at?: string
+          id?: string
+          ip?: string | null
+          phone?: string
+        }
+        Relationships: []
+      }
       product_files: {
         Row: {
           created_at: string
