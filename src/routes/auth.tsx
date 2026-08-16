@@ -307,8 +307,8 @@ function AuthPage() {
                           </InputOTP>
                         </div>
                       </div>
-                      <Button type="submit" size="lg" className="w-full">
-                        <KeyRound className="size-4" /> تایید و ورود
+                      <Button type="submit" size="lg" className="w-full" disabled={busy}>
+                        <KeyRound className="size-4" /> {busy ? "در حال بررسی…" : "تایید و ورود"}
                       </Button>
                       <div className="flex items-center justify-between text-xs">
                         <button
