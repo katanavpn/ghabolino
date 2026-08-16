@@ -280,8 +280,8 @@ function AuthPage() {
                           کد ۶ رقمی ورود به همین شماره پیامک می‌شود.
                         </p>
                       </div>
-                      <Button type="submit" size="lg" className="w-full">
-                        دریافت کد ورود
+                      <Button type="submit" size="lg" className="w-full" disabled={busy}>
+                        {busy ? "در حال ارسال کد…" : "دریافت کد ورود"}
                       </Button>
                     </form>
                   ) : (
