@@ -107,9 +107,9 @@ function AuthPage() {
       return;
     }
     setBusy(true);
-    const res = await verifyOtpFn({ data: { phone, code, fullName: fullName || undefined } }).catch(
-      () => null,
-    );
+    const res = await verifyOtpFn({
+      data: { phone, code, ...(fullName ? { fullName } : {}) },
+    }).catch(() => null);
     if (!res || !res.ok) {
       setBusy(false);
       toast.error(res?.ok === false ? res.message : "خطا در تایید کد. دوباره تلاش کنید.");
