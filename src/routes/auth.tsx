@@ -71,26 +71,57 @@ function AuthPage() {
     if (user) navigate({ to: redirect === "/checkout" ? "/checkout" : "/dashboard", replace: true });
   }, [user, redirect, navigate]);
 
-  const sendCode = (e?: React.FormEvent) => {
+  const sendCode = async (e?: React.FormEvent) => {
     e?.preventDefault();
     if (!isValidPhone(phone)) {
       toast.error("شماره موبایل را به شکل ۰۹xxxxxxxxx وارد کنید");
       return;
     }
+    setBusy(true);
+    const res = await requestOtpFn({ data: { phone } }).catch(() => null);
+    setBusy(false);
+    if (!res) {
+      toast.error("خطا در ارتباط با سرور. دوباره تلاش کنید.");
+      return;
+    }
+    if (!res.ok) {
+      toast.error(res.message);
+      if (res.retryAfter > 0) setSeconds(res.retryAfter);
+      return;
+    }
     setPhoneStep("code");
     setCode("");
-    setSeconds(120);
-    toast.info("سرویس پیامک هنوز متصل نشده است؛ این بخش فعلاً نمایشی است");
+    setSeconds(res.retryAfter || 60);
+    toast.success(res.message);
   };
 
-  const confirmCode = (e?: React.FormEvent) => {
+  const confirmCode = async (e?: React.FormEvent) => {
     e?.preventDefault();
     if (code.length !== 6) {
       toast.error("کد ۶ رقمی را کامل وارد کنید");
       return;
     }
-    toast.info("پس از اتصال سرویس پیامک، ورود با این کد انجام می‌شود");
+    setBusy(true);
+    const res = await verifyOtpFn({ data: { phone, code, fullName: fullName || undefined } }).catch(
+      () => null,
+    );
+    if (!res || !res.ok) {
+      setBusy(false);
+      toast.error(res?.ok === false ? res.message : "خطا در تایید کد. دوباره تلاش کنید.");
+      return;
+    }
+    const { error } = await supabase.auth.signInWithPassword({
+      email: res.email,
+      password: res.password,
+    });
+    setBusy(false);
+    if (error) {
+      toast.error("ورود ناموفق بود. لطفاً دوباره تلاش کنید.");
+      return;
+    }
+    toast.success("خوش آمدید 🌟");
   };
+
 
   const googleSignIn = () => {
     toast.info("ورود با گوگل پس از تنظیم کلیدهای شما فعال می‌شود");
