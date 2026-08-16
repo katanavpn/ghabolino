@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { ArrowRight, ShieldCheck, Smartphone, Mail, KeyRound } from "lucide-react";
@@ -10,7 +11,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { requestOtp, verifyOtp } from "@/lib/otp.functions";
 import { toFaDigits } from "@/lib/format";
+
 
 export const Route = createFileRoute("/auth")({
   validateSearch: (s: Record<string, unknown>) => ({
@@ -52,7 +55,9 @@ function AuthPage() {
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
 
-  // phone OTP (UI only for now — gateway is wired later)
+  // phone OTP via SMS.ir
+  const requestOtpFn = useServerFn(requestOtp);
+  const verifyOtpFn = useServerFn(verifyOtp);
   const [phone, setPhone] = useState("");
   const [phoneStep, setPhoneStep] = useState<"phone" | "code">("phone");
   const [code, setCode] = useState("");
@@ -71,26 +76,57 @@ function AuthPage() {
     if (user) navigate({ to: redirect === "/checkout" ? "/checkout" : "/dashboard", replace: true });
   }, [user, redirect, navigate]);
 
-  const sendCode = (e?: React.FormEvent) => {
+  const sendCode = async (e?: React.FormEvent) => {
     e?.preventDefault();
     if (!isValidPhone(phone)) {
       toast.error("شماره موبایل را به شکل ۰۹xxxxxxxxx وارد کنید");
       return;
     }
+    setBusy(true);
+    const res = await requestOtpFn({ data: { phone } }).catch(() => null);
+    setBusy(false);
+    if (!res) {
+      toast.error("خطا در ارتباط با سرور. دوباره تلاش کنید.");
+      return;
+    }
+    if (!res.ok) {
+      toast.error(res.message);
+      if (res.retryAfter > 0) setSeconds(res.retryAfter);
+      return;
+    }
     setPhoneStep("code");
     setCode("");
-    setSeconds(120);
-    toast.info("سرویس پیامک هنوز متصل نشده است؛ این بخش فعلاً نمایشی است");
+    setSeconds(res.retryAfter || 60);
+    toast.success(res.message);
   };
 
-  const confirmCode = (e?: React.FormEvent) => {
+  const confirmCode = async (e?: React.FormEvent) => {
     e?.preventDefault();
     if (code.length !== 6) {
       toast.error("کد ۶ رقمی را کامل وارد کنید");
       return;
     }
-    toast.info("پس از اتصال سرویس پیامک، ورود با این کد انجام می‌شود");
+    setBusy(true);
+    const res = await verifyOtpFn({
+      data: { phone, code, ...(fullName ? { fullName } : {}) },
+    }).catch(() => null);
+    if (!res || !res.ok) {
+      setBusy(false);
+      toast.error(res?.ok === false ? res.message : "خطا در تایید کد. دوباره تلاش کنید.");
+      return;
+    }
+    const { error } = await supabase.auth.signInWithPassword({
+      email: res.email,
+      password: res.password,
+    });
+    setBusy(false);
+    if (error) {
+      toast.error("ورود ناموفق بود. لطفاً دوباره تلاش کنید.");
+      return;
+    }
+    toast.success("خوش آمدید 🌟");
   };
+
 
   const googleSignIn = () => {
     toast.info("ورود با گوگل پس از تنظیم کلیدهای شما فعال می‌شود");
@@ -244,8 +280,8 @@ function AuthPage() {
                           کد ۶ رقمی ورود به همین شماره پیامک می‌شود.
                         </p>
                       </div>
-                      <Button type="submit" size="lg" className="w-full">
-                        دریافت کد ورود
+                      <Button type="submit" size="lg" className="w-full" disabled={busy}>
+                        {busy ? "در حال ارسال کد…" : "دریافت کد ورود"}
                       </Button>
                     </form>
                   ) : (
@@ -271,8 +307,8 @@ function AuthPage() {
                           </InputOTP>
                         </div>
                       </div>
-                      <Button type="submit" size="lg" className="w-full">
-                        <KeyRound className="size-4" /> تایید و ورود
+                      <Button type="submit" size="lg" className="w-full" disabled={busy}>
+                        <KeyRound className="size-4" /> {busy ? "در حال بررسی…" : "تایید و ورود"}
                       </Button>
                       <div className="flex items-center justify-between text-xs">
                         <button
