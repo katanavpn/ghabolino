@@ -55,7 +55,9 @@ function AuthPage() {
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
 
-  // phone OTP (UI only for now — gateway is wired later)
+  // phone OTP via SMS.ir
+  const requestOtpFn = useServerFn(requestOtp);
+  const verifyOtpFn = useServerFn(verifyOtp);
   const [phone, setPhone] = useState("");
   const [phoneStep, setPhoneStep] = useState<"phone" | "code">("phone");
   const [code, setCode] = useState("");
